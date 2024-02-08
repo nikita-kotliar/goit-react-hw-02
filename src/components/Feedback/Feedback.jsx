@@ -1,28 +1,14 @@
-import { useEffect, useState } from "react";
-
-export const Feedback = ({ clicksGood, clicksNeutral, clicksBad }) => {
-  const [totalFeedback, setTotalFeedback] = useState(0);
-
-  useEffect(() => {
-    
-    const total = clicksBad + clicksGood + clicksNeutral;
-    setTotalFeedback(total);
-
-  
-    localStorage.setItem(
-      "feedbackData",
-      JSON.stringify({ clicksGood, clicksNeutral, clicksBad })
-    );
-  }, [clicksGood, clicksNeutral, clicksBad]); 
+export const Feedback = ({ Good, Neutral, Bad }) => {
+  const totalFeedback = Good + Neutral + Bad;
 
   return (
     <>
-      <p>Good: {clicksGood}</p>
-      <p>Neutral: {clicksNeutral}</p>
-      <p>Bad: {clicksBad}</p>
+      <p>Good: {Good}</p>
+      <p>Neutral: {Neutral}</p>
+      <p>Bad: {Bad}</p>
       <p>Total: {totalFeedback}</p>
       <p>
-        {Math.round(((clicksGood + clicksNeutral) / totalFeedback) * 100)} %
+        {Math.round(((Good + Neutral) / totalFeedback) * 100)} %
       </p>
     </>
   );
