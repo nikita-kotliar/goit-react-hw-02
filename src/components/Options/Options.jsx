@@ -1,36 +1,21 @@
-export const Options = ({
-  Good,
-  setGood,
-  Neutral,
-  setNeutral,
-  Bad,
-  setBad,
-}) => {
-  const handleGoodClick = () => {
-    setGood(Good + 1);
-  };
+export const Options = ({ feedback, setFeedback }) => {
+  const { good, neutral, bad } = feedback;
 
-  const handleNeutralClick = () => {
-    setNeutral(Neutral + 1);
-  };
-
-  const handleBadClick = () => {
-    setBad(Bad + 1);
+  const handleClick = (feedbackItem) => {
+    setFeedback({ ...feedback, [feedbackItem]: feedback[feedbackItem] + 1 });
   };
 
   const resetClicks = () => {
-    setBad(0);
-    setNeutral(0);
-    setGood(0);
+    setFeedback({ good: 0, neutral: 0, bad: 0 });
   };
 
-  const total = Good + Neutral + Bad;
+  const total = good + neutral + bad;
 
   return (
     <div>
-      <button onClick={handleGoodClick}>Good</button>
-      <button onClick={handleNeutralClick}>Neutral</button>
-      <button onClick={handleBadClick}>Bad</button>
+      <button onClick={() => handleClick("good")}>Good</button>
+      <button onClick={() => handleClick("neutral")}>Neutral</button>
+      <button onClick={() => handleClick("bad")}>Bad</button>
       {total > 0 ? <button onClick={resetClicks}>Reset</button> : null}
     </div>
   );

@@ -1,15 +1,14 @@
-export const Feedback = ({ Good, Neutral, Bad }) => {
-  const totalFeedback = Good + Neutral + Bad;
+export const Feedback = ({ feedback }) => {
+  const { good, neutral, bad } = feedback;
+  const totalFeedback = good + neutral + bad;
 
   return (
     <>
-      <p>Good: {Good}</p>
-      <p>Neutral: {Neutral}</p>
-      <p>Bad: {Bad}</p>
+      <p>Good: {good}</p>
+      <p>Neutral: {neutral}</p>
+      <p>Bad: {bad}</p>
       <p>Total: {totalFeedback}</p>
-      <p>
-        {Math.round(((Good + Neutral) / totalFeedback) * 100)} %
-      </p>
+      <p>{Math.round(((good + neutral) / totalFeedback) * 100)} %</p>
     </>
   );
 };
