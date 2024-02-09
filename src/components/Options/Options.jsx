@@ -1,4 +1,4 @@
-export const Options = ({ feedback, setFeedback }) => {
+export const Options = ({ feedback, setFeedback, total }) => {
   const { good, neutral, bad } = feedback;
 
   const handleClick = (feedbackItem) => {
@@ -8,8 +8,6 @@ export const Options = ({ feedback, setFeedback }) => {
   const resetClicks = () => {
     setFeedback({ good: 0, neutral: 0, bad: 0 });
   };
-
-  const total = good + neutral + bad;
 
   return (
     <div>

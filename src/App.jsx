@@ -18,16 +18,14 @@ function App() {
   }, [feedback]);
   const { good, neutral, bad } = feedback;
   const total = good + neutral + bad;
+  const rate = Math.round(((good + neutral) / total) * 100);
 
   return (
     <>
       <Description />
-      <Options
-        feedback={feedback}
-        setFeedback={setFeedback}
-      />
+      <Options feedback={feedback} setFeedback={setFeedback} total={total} />
       {total > 0 ? (
-        <Feedback feedback={feedback} />
+        <Feedback feedback={feedback} total={total} rate={rate} />
       ) : (
         <Notification />
       )}
